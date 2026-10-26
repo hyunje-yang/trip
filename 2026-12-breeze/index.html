@@ -125,13 +125,22 @@ nav .wrap{padding-right:58px}
 <nav><div class="wrap"><a href="#plan">일정</a><a href="#book">예약 순서</a><a href="#room">방 고르기</a><a href="#onboard">배에서 할 것</a><a href="#progreso">12/25 프로그레소</a><a href="#cozumel">12/26 코수멜</a><a href="#money">총비용</a><a href="#docs">서류</a><a href="#src">출처</a></div></nav>
 <main class="wrap">
 <div class="call good" id="booked" style="margin-top:22px"><h4>✅ 예약 완료 (2026-10-26)</h4>
-<div class="tscroll"><table class="tb"><tbody>
-<tr><td>예약 번호</td><td><span class=dim>(공개 페이지에서는 가림 · 원본 파일에 있음)</span></td></tr>
-<tr><td>배 · 날짜</td><td>Carnival Breeze · <b>12/23(수) ~ 12/28(월)</b> · 5일 서부 카리브해, 갈베스턴 출발</td></tr>
-<tr><td>방</td><td><b>1321호</b> · 디럭스 오션뷰 · 1층(Riviera) · 배 가운데(Middle)<br><span class=dim>앞을 보고 오른쪽 창</span></td></tr>
-<tr><td>손님 1</td><td><span class=dim>(공개 페이지에서는 가림 · 원본 파일에 있음)</span></td></tr>
-<tr><td>손님 2</td><td>지애님 · <b>아직 'TBA'(정보 안 넣음)</b></td></tr>
-<tr><td>요금</td><td>Escape To Paradise (G3J) · 크루즈 2인 $2,298 · 선상 크레딧 $25 포함</td></tr></tbody></table></div>
+<div id="lkBox" style="margin:8px 0 4px">
+<button id="lkB" type="button" style="font:inherit;font-weight:700;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer">🔒 예약 정보 열기 (예약 번호 · 방 · 손님)</button>
+<div id="lkF" hidden style="margin-top:10px"><input id="lkP" type="password" inputmode="numeric" autocomplete="off" placeholder="비밀번호" style="font:inherit;width:9em;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)">
+<button id="lkG" type="button" style="font:inherit;padding:9px 14px;border-radius:10px;border:0;background:var(--teal);color:#fff;cursor:pointer">확인</button>
+<div id="lkM" style="margin-top:6px;font-size:13.5px;color:var(--red)"></div></div></div><div id="lkOut"></div>
+<script>(function(){var D={s:"SAgV6vS7OEUvhrco8pizNw==",v:"v67QI/r1+/ixECAV",c:"uiFyR8KlHZ916ZGowKkHp+/BF+YoMaCOhzcyzgcP/t8VWt3DLSTIRgoB5hvSKX5mFcsBtl8c6b72E7vuQNe6ajiShd9gECGPq3DQZVKc4k81yy0GlSebVRbw9eQqCqls7jwME2aK+DA9j13iuZ+/sr9+Ktx4Xn6TNQWMfrLISXDJYzO63w3eORo/V3YmDFU25JCKoXWN53pjveRh6utdhYcfg9+CmWJvxvsBwj6BUYsPKbirGHltcydmYp4Cm0Tgs8Zmi+srzjMJ1JcjjfJBlHCX8d4KyKjKjrBNhH79eq+SPVPuk/xVB6J/YZ+8VRFxJwwcmm5Q7zpJPNwPWhznaLsiXG+LT/kw9Nm7QG7FWE0J3XbsDGssJIDEyZGkCbIlnJ28QSV8BCdRmh8rXsj30xO1pVkYVgSLygUCck4rw0PmR5uOitRUZvG+7aM76QN6HF+Y4vSi8JqhIEb3TeV1oQ35UaWWvs3cJ2P+QHptBGKdLpU54G9AMAD430n2gLJ/E+T2/bybkCoAZluwsIqH8KJ2hqx6lP2Av5CPui6sstvrl5mc1xo8kXKAVDHBaXNzcVggbTr+lOwaWWJ6tZWXXvqqJWMMVq8Jg2+FVF34JAhiLrgkRWYpbqF4alGvPfXMqLuQwLz4q03pAplrpj5qxSX/8/0GAgufCg0jTN6DVtkjW7arRk8DAXAFjmzqd01+rAENUAbYt59wPhppv5Q8uihozUYifh6ulnKPtkL0f3C9xO1FseHj2n6IJR9ZP+F5VJiEi9yZFJ979sTZ4TJF95HZ001gr6moK0LBR7Lb1j3pyYEVVj1+eO368x+hVw/OGpIC0zWqqh0JEdAee04ffuNIlMpBVuO8/s/DY26vAmCmHfjw+oPVt7joCKtTayc9HgY/hmZuKeNAZ0er1eSV599HQHOxMZBm9hkfwgcByVLKtw61jGpD3wa4j/gnzq3QjsGlM2ihEu/jMmsoo7xzCmuRQxf35iBsKIKzdHgBQBtwGJ4iILhxQtM=",n:600000};
+function u(x){return Uint8Array.from(atob(x),function(c){return c.charCodeAt(0)})}
+var B=document.getElementById("lkB"),F=document.getElementById("lkF"),P=document.getElementById("lkP"),M=document.getElementById("lkM");
+B.onclick=function(){F.hidden=false;P.focus()};
+async function go(){M.textContent="여는 중…";try{
+var k=await crypto.subtle.importKey("raw",new TextEncoder().encode(P.value),"PBKDF2",false,["deriveKey"]);
+var a=await crypto.subtle.deriveKey({name:"PBKDF2",salt:u(D.s),iterations:D.n,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"]);
+var t=await crypto.subtle.decrypt({name:"AES-GCM",iv:u(D.v)},a,u(D.c));
+document.getElementById("lkOut").innerHTML=new TextDecoder().decode(t);document.getElementById("lkBox").remove();
+}catch(e){M.textContent="비밀번호가 틀렸어요";P.select()}}
+document.getElementById("lkG").onclick=go;P.addEventListener("keydown",function(e){if(e.key==="Enter")go()});})();</script>
 <p style="margin:10px 0 4px"><b>남은 할 일</b></p><ol>
 <li><b>지애님 정보 넣기</b>: Carnival 예약 화면 → 'Add Guest Details'. 이름·생년월일을 여권 영문 그대로</li>
 <li>투어 예약 (<a href="#progreso">프로그레소</a> · <a href="#cozumel">코수멜</a>): carnival.com에서 예약 번호로</li>
