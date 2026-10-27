@@ -228,6 +228,24 @@ details.pkc .pkb ul{margin:4px 0 8px;padding-left:20px}
 :root[data-theme="light"] #smSvg .dk{fill:#f4f1ea;stroke:#9a9184}
 :root[data-theme="light"] #smSvg .sea{fill:#9cc6ea}
 
+
+.dday{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px;margin:18px 0 6px;box-shadow:0 8px 24px rgba(30,110,170,.13)}
+.dday h2{margin:0 0 10px;font-size:19px}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.dgrid div{background:var(--soft);border-radius:13px;padding:9px 4px;text-align:center}
+.dgrid span{display:block;font-size:12.5px;color:var(--dim)}
+.dgrid b{font-size:20px;white-space:nowrap}
+.dprog{height:12px;background:var(--soft);border-radius:9px;margin:12px 0 4px;overflow:hidden}
+.dprog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--amber));border-radius:9px;transition:width .6s}
+.dpt{font-size:12.5px;color:var(--dim)}
+.dstrip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:10px 0 0}
+.dstrip div{border:1px solid var(--line);border-radius:9px;padding:4px 2px;text-align:center;font-size:11.5px;line-height:1.3;color:var(--dim)}
+.dstrip b{display:block;font-size:12.5px;color:var(--ink)}
+.dstrip .past{opacity:.45}
+.dstrip .now{border:2px solid var(--teal);background:var(--soft);color:var(--ink);font-weight:700}
+.dnow{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--hl);font-size:14.5px;line-height:1.5}
+.dnow em{font-style:normal;font-weight:700;color:var(--teal)}
+
 ul.tl{margin:4px 0 8px;padding-left:18px}ul.tl li{margin:2px 0}
 </style><style>
 #tmB{position:fixed;top:8px;right:10px;z-index:9000;width:42px;height:42px;border-radius:50%;border:0;
@@ -276,6 +294,13 @@ nav .wrap{padding-right:58px}
 </svg></div></div><div class="wv front"><svg viewBox="0 0 1200 46" preserveAspectRatio="none" width="100%" height="100%"><path d="M0 8 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 V46 H0Z" fill="#4aa6d6"/></svg></div></div></header>
 <nav><div class="wrap"><a href="#bags">짐</a><a href="#pack">챙길 것</a><a href="#plan">일정</a><a href="#day1">첫날</a><a href="#onboard">배에서 할 것</a><a href="#progreso">12/25 프로그레소</a><a href="#cozumel">12/26 코수멜</a><a href="#money">총비용</a><a href="#docs">서류</a><a href="#src">출처</a></div></nav>
 <main class="wrap">
+<section class="dday" aria-label="크루즈까지 남은 날">
+<h2>🛳 우리 크루즈</h2>
+<div class="dgrid"><div><span>출항</span><b>12.23(수)</b></div><div><span>오늘은</span><b id="ddNow">-</b></div><div><span id="ddLab">출항까지</span><b id="ddCnt">-</b></div></div>
+<div class="dprog"><i id="ddBar"></i></div><div class="dpt" id="ddTxt"></div>
+<div class="dstrip"><div data-d="2026-12-23"><b>23일</b>승선</div><div data-d="2026-12-24"><b>24일</b>바다</div><div data-d="2026-12-25"><b>25일</b>프로그레소</div><div data-d="2026-12-26"><b>26일</b>코수멜</div><div data-d="2026-12-27"><b>27일</b>바다</div><div data-d="2026-12-28"><b>28일</b>하선</div></div>
+<div class="dnow" id="ddMain"></div>
+</section>
 <div class="call good" id="booked" style="margin-top:22px"><h4>✅ 크루즈 예약 (2026-10-26) · 투어·주차 예약 (2026-10-27)</h4>
 <div id="lkBox" style="margin:8px 0 4px">
 <button id="lkB" type="button" style="font:inherit;font-weight:700;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer">🔒 예약 정보 열기 (예약 번호 · 방 · 손님 · 투어 · 주차)</button>
@@ -630,5 +655,19 @@ M.addEventListener("click",function(e){if(e.target===M||e.target.closest(".smx")
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!M.hidden)close()});
 function cnt(){document.querySelectorAll("details.pkc").forEach(function(d){var n=d.querySelector(".pkn");if(!n)return;var all=d.querySelectorAll("input[type=checkbox]"),c=0;all.forEach(function(x){if(x.checked)c++});n.textContent=c+"/"+all.length;n.classList.toggle("done",c===all.length)})}
 document.querySelectorAll("details.pkc input[type=checkbox]").forEach(function(x){x.addEventListener("change",cnt)});setTimeout(cnt,0);
-var pa=document.querySelector(".pkall");if(pa)pa.addEventListener("click",function(){var ds=document.querySelectorAll("details.pkc"),open=pa.textContent==="모두 펼치기";ds.forEach(function(d){d.open=open});pa.textContent=open?"모두 접기":"모두 펼치기"});})();</script>
+var pa=document.querySelector(".pkall");if(pa)pa.addEventListener("click",function(){var ds=document.querySelectorAll("details.pkc"),open=pa.textContent==="모두 펼치기";ds.forEach(function(d){d.open=open});pa.textContent=open?"모두 접기":"모두 펼치기"});})();</script><script>(function(){var DAYS=[["2026-12-23", "승선", "05:00 오스틴 출발 → 12:00쯤 Lighthouse 주차 → 승선 → <b>15:30 출항</b> · 저녁 🎄 트리 점등식"], ["2026-12-24", "바다", "🌊 하루 종일 바다 · 🎄 <b>크리스마스 이브</b> · 해상일 브런치 → 밤 극장 공연"], ["2026-12-25", "프로그레소", "🎄 <b>크리스마스</b> · <b>07:00 치첸이트사 + 세노테 투어</b> 출발 · 저녁 크리스마스 디너"], ["2026-12-26", "코수멜", "<b>12:30 쌍동선 + 스노클</b> 출발 · 배는 17:00 출항 · 저녁 스테이크하우스"], ["2026-12-27", "바다", "🌊 마지막 해상일 · <b>13:00 전 HUB 앱으로 하선 방식 예약</b> · 저녁 Cucina"], ["2026-12-28", "하선", "⚓ 08:00 갈베스턴 도착 · <b>08:30 전 방 비우기</b> · 🚗 오스틴까지 약 4시간"]],BEF=[["2026-11-30", "지애님 <b>I-94 날짜 확인</b> · <b>ESTA 신청</b>·만료일 확인 (11월 중)"], ["2026-12-08", "12/9(수)부터 <b>온라인 체크인</b> 열림 · 그 전에 ESTA 마무리"], ["2026-12-21", "<b>온라인 체크인</b> + 승선권·<b>짐 태그 인쇄</b> (12/22까지)"], ["2026-12-22", "<b>내일 출발!</b> 짐 싸기 · 짐 태그 붙이기 · 와인 2병 장보기 · 자물쇠 잠그지 않기"]];
+function D(x){var p=x.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+var t=new Date(),q=location.search.match(/[?&]d=(\d{4}-\d\d-\d\d)/);if(q)t=D(q[1]);t.setHours(0,0,0,0);
+var dep=D(DAYS[0][0]),book=D("2026-10-26"),end=D(DAYS[5][0]),k=Math.round((t-dep)/864e5),$=function(i){return document.getElementById(i)};
+var now=$("ddNow"),lab=$("ddLab"),cnt=$("ddCnt"),bar=$("ddBar"),txt=$("ddTxt"),main=$("ddMain"),wd="일월화수목금토";
+var today=(t.getMonth()+1)+"/"+t.getDate()+"("+wd[t.getDay()]+")";
+if(k<0){var all=Math.round((dep-book)/864e5),gone=all+k;now.textContent=today;cnt.textContent="D"+k;
+bar.style.width=Math.max(0,Math.min(100,gone/all*100))+"%";txt.textContent="예약한 날(10/26)부터 출항까지 "+all+"일 중 "+Math.max(0,gone)+"일 지났어요";
+var nx=BEF.filter(function(b){return t<=D(b[0])})[0];main.innerHTML="<em>다음 할 일</em> · "+(nx?nx[1]:"")+' <a href="#booked">To do list</a>';}
+else if(k<=5){now.textContent=(k+1)+"일째";lab.textContent=k<5?"하선까지":"오늘";cnt.textContent=k<5?"D-"+(5-k):"하선";
+bar.style.width=((k+1)/6*100)+"%";txt.textContent="6일 중 "+(k+1)+"일째 · "+DAYS[k][1];
+main.innerHTML="<em>오늘의 큰 일 ("+today+")</em><br>"+DAYS[k][2];}
+else{now.textContent="다녀왔어요";lab.textContent="하선한 지";cnt.textContent=(k-5)+"일";bar.style.width="100%";txt.textContent="6일 모두 끝";
+main.innerHTML=k<=7?"<em>"+today+"</em> · 12/30(수) 지애님 출국":"즐거운 여행이었기를 🎄";}
+document.querySelectorAll(".dstrip div").forEach(function(c){var d=D(c.dataset.d);c.classList.toggle("now",+d===+t);c.classList.toggle("past",d<t)});})();</script>
 <button id="tmB" aria-label="여행 목록 열기">☰</button><div id="tmO"><div id="tmP"><button id="tmX" aria-label="닫기">×</button><h3>여행 목록</h3><p class="s">최신이 위, 지난 여행이 아래</p><a href="../2026-12-breeze/" class=cur><b>12월 크루즈 · Carnival Breeze 5박</b><span>2026.12.23–12.28 · 확정한 계획 · 지금 보는 중</span></a><a href="../2026-12-cruise/"><b>12월 크루즈 · 배 고르기 (4·5박 비교)</b><span>지금까지 조사한 비교</span></a><a href="../2026-10-yellowstone/"><b>옐로스톤 2박 3일</b><span>2026.10.03–10.05</span></a></div></div><script>(function(){var o=document.getElementById("tmO");document.getElementById("tmB").onclick=function(){o.classList.add("on")};document.getElementById("tmX").onclick=function(){o.classList.remove("on")};o.onclick=function(e){if(e.target===o)o.classList.remove("on")};document.addEventListener("keydown",function(e){if(e.key==="Escape")o.classList.remove("on")})})();</script></body></html>
