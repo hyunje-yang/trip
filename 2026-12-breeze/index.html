@@ -125,6 +125,54 @@ h3.sub{margin:26px 0 8px;font-size:18px}
 .tg{display:inline-block;font-size:11px;font-weight:700;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:0 5px;margin-left:2px;white-space:nowrap}
 details.ref{margin:10px 0}details.ref>summary{font-size:15px;line-height:1.5}details.ref .tour{border:none;margin-top:10px}details.ref .rv{margin:9px 0}
 details.ref>summary .dim{font-weight:600;font-size:13px}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#bfe8ff 0%,#d9f2ff 58%,#a9dcf5 100%);color:#17324d;padding:40px 0 168px}
+.hero .sub{color:#2a4a66}.hero .pill{box-shadow:0 1px 3px rgba(23,50,77,.18)}
+.hero .wrap{position:relative;z-index:3}
+.scene{position:absolute;inset:0;pointer-events:none;z-index:1}
+.sun{position:absolute;top:14px;right:66px;width:58px;height:58px}
+.sun .rays{transform-origin:50% 50%;animation:spin 24s linear infinite}
+.moon,.star{display:none}
+.cloud{position:absolute;left:-140px;animation:drift linear infinite;opacity:.95}
+.gull{position:absolute;left:-60px;animation:drift linear infinite}
+.gull svg{animation:flap .5s ease-in-out infinite alternate;transform-origin:50% 60%}
+.island{position:absolute;right:5%;bottom:40px;width:150px}
+.palm{transform-box:fill-box;transform-origin:0% 100%;animation:sway 3.4s ease-in-out infinite}
+.wv{position:absolute;left:0;width:200%;animation:waves linear infinite}
+.wv.back{bottom:0;height:78px;animation-duration:16s}
+.wv.front{bottom:-2px;height:46px;animation-duration:9s;z-index:2}
+.ship{position:absolute;bottom:22px;left:3%;width:190px;z-index:1;animation:cruise 40s ease-in-out infinite}
+.ship .face{animation:turn 40s step-end infinite}
+.ship svg{display:block;width:100%;height:auto;transform-origin:50% 90%;animation:bob 2.8s ease-in-out infinite}
+.puff{animation:smoke 3s ease-out infinite;opacity:0}
+.p2{animation-delay:1s}.p3{animation-delay:2s}
+.dolphin{position:absolute;left:30%;bottom:20px;width:54px;z-index:1;animation:jump 9s ease-in-out infinite;opacity:0}
+.win{fill:#8fd0f0}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drift{to{transform:translateX(calc(100vw + 300px))}}
+@keyframes flap{to{transform:scaleY(.45)}}
+@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+@keyframes waves{to{transform:translateX(-50%)}}
+@keyframes cruise{0%,4%{left:3%}46%,54%{left:calc(100% - 200px)}96%,100%{left:3%}}
+@keyframes turn{0%{transform:scaleX(1)}50%{transform:scaleX(-1)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes smoke{0%{opacity:0;transform:translate(0,0) scale(.6)}20%{opacity:.85}100%{opacity:0;transform:translate(-14px,-30px) scale(1.5)}}
+@keyframes jump{0%,62%{opacity:0;transform:translate(0,30px) rotate(-35deg)}66%{opacity:1}76%{transform:translate(34px,-26px) rotate(5deg)}86%{opacity:1;transform:translate(70px,26px) rotate(45deg)}90%,100%{opacity:0;transform:translate(74px,34px) rotate(45deg)}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(180deg,#0f1f3a 0%,#1a3358 60%,#1d4466 100%);color:#e6f0fa}
+:root:not([data-theme="light"]) .hero .sub{color:#c9dcf0}:root:not([data-theme="light"]) .sun{display:none}
+:root:not([data-theme="light"]) .moon,:root:not([data-theme="light"]) .star{display:block}
+:root:not([data-theme="light"]) .cloud{opacity:.22}:root:not([data-theme="light"]) .win{fill:#ffd36e}
+:root:not([data-theme="light"]) .wv.back path{fill:#1f4f78}:root:not([data-theme="light"]) .wv.front path{fill:#173f63}}
+:root[data-theme="dark"] .hero{background:linear-gradient(180deg,#0f1f3a 0%,#1a3358 60%,#1d4466 100%);color:#e6f0fa}
+:root[data-theme="dark"] .hero .sub{color:#c9dcf0}:root[data-theme="dark"] .sun{display:none}
+:root[data-theme="dark"] .moon,:root[data-theme="dark"] .star{display:block}
+:root[data-theme="dark"] .cloud{opacity:.22}:root[data-theme="dark"] .win{fill:#ffd36e}
+:root[data-theme="dark"] .wv.back path{fill:#1f4f78}:root[data-theme="dark"] .wv.front path{fill:#173f63}
+.moon{position:absolute;top:16px;right:70px;width:44px;height:44px}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:twinkle 2.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.hero *{animation:none!important}.dolphin,.puff{opacity:0}}
+
 </style><style>
 #tmB{position:fixed;top:8px;right:10px;z-index:9000;width:42px;height:42px;border-radius:50%;border:0;
 background:rgba(20,20,20,.62);color:#fff;font-size:21px;line-height:42px;cursor:pointer;box-shadow:0 2px 10px #0004}
@@ -144,7 +192,32 @@ nav .wrap{padding-right:58px}
 <h1>현제님·지애님 Carnival Breeze 5박</h1>
 <p class="sub">12/23(수) 갈베스턴 출항 → 12/25 프로그레소 → 12/26 코수멜 → 12/28(월) 갈베스턴 · <b>가격은 전부 2인 기준</b></p>
 <div class="pills"><span class="pill">✅ 크루즈 예약 10/26</span><span class="pill">✅ 투어 예약 10/27</span><span class="pill">🛏 1321호 · 디럭스 오션뷰</span><span class="pill">🎄 성탄은 멕시코</span></div>
-</div></header>
+</div><div class="scene" aria-hidden="true"><span class="star" style="left:6%;top:18px;animation-delay:0s"></span><span class="star" style="left:14%;top:60px;animation-delay:1.1s"></span><span class="star" style="left:23%;top:30px;animation-delay:0.4s"></span><span class="star" style="left:38%;top:14px;animation-delay:1.8s"></span><span class="star" style="left:47%;top:52px;animation-delay:0.7s"></span><span class="star" style="left:58%;top:22px;animation-delay:2.1s"></span><span class="star" style="left:72%;top:70px;animation-delay:1.4s"></span><span class="star" style="left:84%;top:40px;animation-delay:0.2s"></span><span class="star" style="left:93%;top:64px;animation-delay:1.6s"></span><svg class="sun" viewBox="0 0 60 60"><g class="rays" stroke="#ffc94a" stroke-width="3" stroke-linecap="round"><line x1="30" y1="3" x2="30" y2="10" transform="rotate(0 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(45 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(90 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(135 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(180 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(225 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(270 30 30)"/><line x1="30" y1="3" x2="30" y2="10" transform="rotate(315 30 30)"/></g><circle cx="30" cy="30" r="15" fill="#ffd36e"/><circle cx="25" cy="28" r="1.6" fill="#7a5a1a"/><circle cx="35" cy="28" r="1.6" fill="#7a5a1a"/><path d="M25 34 Q30 38 35 34" stroke="#7a5a1a" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 44 44"><path d="M30 4 A18 18 0 1 0 40 30 A14 14 0 1 1 30 4Z" fill="#fff3c4"/></svg><div class="cloud" style="top:20px;width:96px;animation-duration:46s;animation-delay:-8s"><svg viewBox="0 0 120 50" width="100%"><g fill="#fff"><ellipse cx="38" cy="32" rx="30" ry="16"/><ellipse cx="66" cy="22" rx="26" ry="20"/><ellipse cx="90" cy="34" rx="24" ry="14"/><rect x="20" y="32" width="86" height="16" rx="8"/></g></svg></div><div class="cloud" style="top:64px;width:70px;animation-duration:60s;animation-delay:-34s"><svg viewBox="0 0 120 50" width="100%"><g fill="#fff"><ellipse cx="38" cy="32" rx="30" ry="16"/><ellipse cx="66" cy="22" rx="26" ry="20"/><ellipse cx="90" cy="34" rx="24" ry="14"/><rect x="20" y="32" width="86" height="16" rx="8"/></g></svg></div><div class="cloud" style="top:34px;width:120px;animation-duration:72s;animation-delay:-55s"><svg viewBox="0 0 120 50" width="100%"><g fill="#fff"><ellipse cx="38" cy="32" rx="30" ry="16"/><ellipse cx="66" cy="22" rx="26" ry="20"/><ellipse cx="90" cy="34" rx="24" ry="14"/><rect x="20" y="32" width="86" height="16" rx="8"/></g></svg></div><div class="gull" style="top:58px;animation-duration:30s;animation-delay:-6s"><svg viewBox="0 0 26 12" width="24"><path d="M1 9 Q7 1 13 8 Q19 1 25 9" stroke="#3b4a5e" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><div class="gull" style="top:76px;animation-duration:34s;animation-delay:-20s"><svg viewBox="0 0 26 12" width="24"><path d="M1 9 Q7 1 13 8 Q19 1 25 9" stroke="#3b4a5e" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><div class="island"><svg viewBox="0 0 150 80" aria-hidden="true">
+<ellipse cx="72" cy="72" rx="70" ry="10" fill="#f6e3b4"/>
+<g fill="#d9c08f" stroke="#b39c72" stroke-width="1"><rect x="22" y="58" width="76" height="12"/><rect x="29" y="47" width="62" height="11"/><rect x="36" y="36" width="48" height="11"/><rect x="43" y="25" width="34" height="11"/></g>
+<rect x="51" y="13" width="18" height="12" fill="#c7ab78" stroke="#b39c72"/><rect x="57" y="17" width="6" height="8" fill="#6b5634"/>
+<rect x="56" y="25" width="8" height="45" fill="#bfa36f"/><path d="M56 30 H64 M56 36 H64 M56 42 H64 M56 48 H64 M56 54 H64 M56 60 H64 M56 66 H64" stroke="#a08559" stroke-width="1"/>
+<path d="M126 71 Q122 50 128 28" stroke="#8b5a2b" stroke-width="5" fill="none" stroke-linecap="round"/>
+<g class="palm"><g transform="translate(128 28)" fill="#3fae8c"><ellipse cx="-12" cy="2" rx="14" ry="4.5" transform="rotate(20 -12 2)"/><ellipse cx="12" cy="2" rx="14" ry="4.5" transform="rotate(-20 12 2)"/>
+<ellipse cx="-8" cy="-6" rx="12" ry="4" transform="rotate(-30 -8 -6)" fill="#5cc8a8"/><ellipse cx="9" cy="-6" rx="12" ry="4" transform="rotate(35 9 -6)" fill="#5cc8a8"/><circle cx="0" cy="3" r="3" fill="#8b5a2b"/></g></g>
+</svg></div><div class="wv back"><svg viewBox="0 0 1200 78" preserveAspectRatio="none" width="100%" height="100%"><path d="M0 10 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 q37.5 -10 75.0 0 t75.0 0 V78 H0Z" fill="#7cc4e8"/></svg></div><div class="dolphin"><svg viewBox="0 0 60 34" aria-hidden="true"><path d="M4 22 Q18 4 42 10 Q50 12 56 8 Q55 16 47 17 Q33 22 18 27 Q10 30 4 22Z" fill="#6aa9d6"/>
+<path d="M26 9 L30 1 L34 10Z" fill="#6aa9d6"/><path d="M8 24 L1 30 L10 28Z" fill="#6aa9d6"/><circle cx="46" cy="12" r="1.5" fill="#17324d"/><path d="M22 20 Q32 22 42 16" stroke="#e8f4fb" stroke-width="2" fill="none"/></svg></div><div class="ship"><div class="face"><svg viewBox="0 0 190 112" aria-hidden="true">
+<circle class="puff" cx="112" cy="14" r="6" fill="#fff"/><circle class="puff p2" cx="112" cy="14" r="5" fill="#fff"/><circle class="puff p3" cx="112" cy="14" r="7" fill="#fff"/>
+<line x1="30" y1="22" x2="30" y2="50" stroke="#5b6b80" stroke-width="2"/><path d="M30 23 L46 28 L30 33Z" fill="#ff6b6b"/>
+<path d="M100 22 H124 L128 50 H96Z" fill="#e8413c"/><rect x="98" y="30" width="28" height="5" fill="#2f6fcf"/>
+<path d="M100 22 Q112 2 128 12 Q118 12 124 22Z" fill="#e8413c"/><rect x="98" y="19" width="28" height="6" rx="3" fill="#fff"/><circle cx="129" cy="11" r="4" fill="#fff"/>
+<rect x="52" y="38" width="96" height="16" rx="5" fill="#fff" stroke="#d5dde8"/>
+<rect x="36" y="52" width="130" height="16" rx="5" fill="#fff" stroke="#d5dde8"/>
+<g class="win"><rect x="60" y="43" width="9" height="6" rx="2"/><rect x="74" y="43" width="9" height="6" rx="2"/><rect x="132" y="43" width="9" height="6" rx="2"/>
+<rect x="44" y="57" width="9" height="6" rx="2"/><rect x="58" y="57" width="9" height="6" rx="2"/><rect x="72" y="57" width="9" height="6" rx="2"/><rect x="86" y="57" width="9" height="6" rx="2"/>
+<rect x="100" y="57" width="9" height="6" rx="2"/><rect x="114" y="57" width="9" height="6" rx="2"/><rect x="128" y="57" width="9" height="6" rx="2"/><rect x="142" y="57" width="9" height="6" rx="2"/></g>
+<path d="M10 68 H184 L170 100 Q164 106 152 106 H34 Q22 106 16 98Z" fill="#26457f"/>
+<path d="M12 74 H182 L180 79 H14Z" fill="#e8413c"/>
+<g fill="#fff"><circle cx="40" cy="88" r="3.4"/><circle cx="56" cy="88" r="3.4"/><circle cx="72" cy="88" r="3.4"/><circle cx="88" cy="88" r="3.4"/><circle cx="104" cy="88" r="3.4"/><circle cx="120" cy="88" r="3.4"/></g>
+<circle cx="150" cy="87" r="3" fill="#fff"/><circle cx="164" cy="87" r="3" fill="#fff"/><circle cx="150.8" cy="87.6" r="1.6" fill="#17324d"/><circle cx="164.8" cy="87.6" r="1.6" fill="#17324d"/>
+<ellipse cx="144" cy="94" rx="4" ry="2.4" fill="#ff8fb1" opacity=".85"/><ellipse cx="171" cy="94" rx="4" ry="2.4" fill="#ff8fb1" opacity=".85"/>
+<path d="M152 95 Q157.5 100 163 95" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg></div></div><div class="wv front"><svg viewBox="0 0 1200 46" preserveAspectRatio="none" width="100%" height="100%"><path d="M0 8 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 q30.0 -8 60.0 0 t60.0 0 V46 H0Z" fill="#4aa6d6"/></svg></div></div></header>
 <nav><div class="wrap"><a href="#pack">챙길 것</a><a href="#plan">일정</a><a href="#day1">첫날</a><a href="#progreso">12/25 프로그레소</a><a href="#cozumel">12/26 코수멜</a><a href="#onboard">배에서 할 것</a><a href="#money">총비용</a><a href="#docs">서류</a><a href="#src">출처</a></div></nav>
 <main class="wrap">
 <div class="call good" id="booked" style="margin-top:22px"><h4>✅ 크루즈 예약 (2026-10-26) · 투어 예약 (2026-10-27)</h4>
@@ -409,8 +482,8 @@ document.getElementById("lkG").onclick=go;P.addEventListener("keydown",function(
 <p class="src"><a href="https://help.carnival.com/app/answers/detail/a_id/4252">Carnival 식당 안내 (값·서비스료)</a> · carnival.com 각 식당·시설 페이지 · <a href="https://www.cruisecritic.com/cruise/carnival/carnival-breeze/dining">Cruise Critic (층·시간)</a> · <a href="https://www.cruisehive.com/carnival-drink-package-and-wifi-prices-will-change-by-sailing-from-december-1/220797">Cruise Hive 2026-10-14</a> · <a href="https://www.cruisemummy.co.uk/?p=9438">Cruise Mummy</a> · <a href="https://help.carnival.com/app/answers/detail/a_id/1129">Carnival 바다 위 휴대폰</a></p></div>
 </section>
 
-<section id="money"><h2>둘이 합쳐 얼마나 드나</h2><p class="lead">크루즈는 결제 완료. 낮은 쪽은 싼 투어·주차, 높은 쪽은 비싼 쪽을 골랐을 때.</p>
-<div class="tscroll"><table class="tb"><thead><tr><th>항목</th><th>2인</th><th>메모</th></tr></thead><tbody><tr><td>크루즈 (1321호, 결제 완료)</td><td class="nw">$2,298</td><td class="dim">세금·항구비 포함</td></tr><tr><td>팁</td><td class="nw">$170</td><td class="dim">1인 1일 $17 × 2명 × 5박</td></tr><tr><td>프로그레소 투어</td><td class="nw">$316</td><td class="dim">치첸이트사 + 세노테 Ik Kil (1인 $157.99) ✅ 결제</td></tr><tr><td>코수멜 투어</td><td class="nw">$260</td><td class="dim">고급 쌍동선 + 스노클 (1인 $129.99) ✅ 결제</td></tr><tr><td>WiFi Premium × 2</td><td class="nw">$255</td><td class="dim">1인 1일 $25.50 × 5일 × 2명 ('부터' 가격으로 계산, 실제 결제액은 확인 못 함) ✅ 결제</td></tr><tr><td>갈베스턴 주차 (5박)</td><td class="nw">$129 ~ $151</td><td class="dim">항구 공식 주차장 Lot A ~ Express (예약 화면 값)</td></tr><tr><td>기름값 (오스틴 왕복 약 690 km)</td><td class="nw">$50 ~ $60</td><td class="dim"><b>내 추정</b> (갤런당 약 $3, 연비 25 mpg 가정)</td></tr><tr class="inwin"><td><b>합계</b></td><td class="nw"><b>$3,478 ~ $3,510</b></td><td>음료·유료 식당 빼고</td></tr></tbody></table></div>
+<section id="money"><h2>총 비용</h2><p class="lead">주차만 아직 결제 안 했다. 기름값은 내 추정이라 범위로 적었다.</p>
+<div class="tscroll"><table class="tb"><thead><tr><th>항목</th><th>2인</th><th>결제</th><th>메모</th></tr></thead><tbody><tr><td>크루즈 (1321호)</td><td class="nw">$2,298</td><td class="nw" style="color:var(--green);font-weight:700">✅ 완료</td><td class="dim">세금·항구비 포함</td></tr><tr><td>팁</td><td class="nw">$170</td><td class="nw" style="color:var(--green);font-weight:700">✅ 완료</td><td class="dim">1인 1일 $17 × 2명 × 5박</td></tr><tr><td>프로그레소 투어</td><td class="nw">$316</td><td class="nw" style="color:var(--green);font-weight:700">✅ 완료</td><td class="dim">치첸이트사 + 세노테 Ik Kil (1인 $157.99)</td></tr><tr><td>코수멜 투어</td><td class="nw">$260</td><td class="nw" style="color:var(--green);font-weight:700">✅ 완료</td><td class="dim">고급 쌍동선 + 스노클 (1인 $129.99)</td></tr><tr><td>WiFi Premium × 2</td><td class="nw">$255</td><td class="nw" style="color:var(--green);font-weight:700">✅ 완료</td><td class="dim">1인 1일 $25.50 × 5일 × 2명 ('부터' 가격으로 계산, 실제 결제액은 확인 못 함)</td></tr><tr><td>갈베스턴 주차 (5박)</td><td class="nw">$129 ~ $151</td><td class="nw" style="color:var(--amber);font-weight:700">⬜ 아직</td><td class="dim">항구 공식 주차장 Lot A ~ Express (예약 화면 값)</td></tr><tr><td>기름값 (오스틴 왕복 약 690 km)</td><td class="nw">$50 ~ $60</td><td class="nw" style="color:var(--green);font-weight:700">✅ 완료</td><td class="dim"><b>내 추정</b> (갤런당 약 $3, 연비 25 mpg 가정)</td></tr><tr class="inwin"><td><b>합계</b></td><td class="nw"><b>$3,478 ~ $3,510</b></td><td class="nw">✅ $3,349</td><td>음료·유료 식당 빼고. 남은 것: 갈베스턴 주차 (5박)</td></tr></tbody></table></div>
 <div class="call info"><h4>더 쓸 수 있는 것 (넣지 않음)</h4><ul>
 <li>유료 식당 세 곳 2인 약 $220 · 음료 패키지 · 스파</li>
 <li>갈베스턴 아침: 식사 + Bishop's Palace 2인 $30 · 짐꾼 팁 가방당 약 $5</li></ul></div>
