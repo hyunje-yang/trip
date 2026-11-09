@@ -132,12 +132,36 @@ document.getElementById("lkG").onclick=go;P.addEventListener("keydown",function(
 <tr><td>일 12/6</td><td><b>UA 1668</b><br><span class="small">A320 · 4h 5m</span></td><td>AUS <b>08:45</b> → SFO <b>10:50</b></td></tr>
 <tr><td>금 12/11</td><td><b>UA 1116</b><br><span class="small">737 MAX 8 · 3h 34m</span></td><td>SFO <b>12:21</b> → AUS <b>17:55</b></td></tr>
 </table></div>
-<p class="small">시간은 각 공항 현지 시각 (SF는 Austin보다 2시간 느림). 요금 Basic Economy (N) 왕복 $383 · Explorer 카드 결제.</p>
+<p class="small">시간은 각 공항 현지 시각 (SF는 Austin보다 2시간 느림). 두 편 모두 직항(Nonstop) · 기내식은 사 먹어야 함(Meals for purchase).</p>
+<div class="tw"><table>
+<tr><th>결제 내역</th><th class="n">금액</th></tr>
+<tr><td>Fare (항공 운임)</td><td class="n">$327.44</td></tr>
+<tr><td>Taxes and Fees (세금·수수료)</td><td class="n">$55.36</td></tr>
+<tr class="tot"><td>Total · Basic Economy (N) · Explorer 카드(Visa)</td><td class="n">$382.80</td></tr>
+</table></div>
+<div class="box" id="flightSecret"><b>항공권 정보</b><div id="lk1Box" style="margin:8px 0 4px">
+<button id="lk1B" type="button" style="font:inherit;font-weight:700;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer">🔒 항공권 정보 열기 (확인번호 · eTicket · 카드)</button>
+<div id="lk1F" hidden style="margin-top:10px"><input id="lk1P" type="password" inputmode="numeric" autocomplete="off" placeholder="비밀번호" style="font:inherit;width:9em;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)">
+<button id="lk1G" type="button" style="font:inherit;padding:9px 14px;border-radius:10px;border:0;background:var(--teal);color:#fff;cursor:pointer">확인</button>
+<div id="lk1M" style="margin-top:6px;font-size:13.5px;color:var(--red)"></div></div></div><div id="lk1Out"></div>
+<script>(function(){var D={s:"Yd316qljIFHkKp0W8IQm9w==",v:"HVBi4qR4sXJUSMFy",c:"UuS13eq6jeVHWVOnjpwMxv6IcwGN1UCzKmmrEUktHA5u8D5gIdsT8JWQpQ44NKF/Ore7y4vRLJGCjY7iHVDUi04DNxbD2dtrcfRlgvh6w4uvpFOkyHzg1uytUq5EO1Eyjp5kZzr2Ghh4EBesWoCKR9ufkEHiItZoKlx1IEM/gT+hrTr9AqtxZwBY/2I8KP3QdnfflAURwgCZ96KavZfKYn3i8pRxIwFFkYqrekX1xFRxlqJiDJamESq9pciui8iWNmsXBsf5QxmwC38HXa4C2+FQwoDiX2kgVzZHXWaPhduFpI80teFf1UCtCPGj27dXXXcCVBVoDsUZVWkEymWV7s3iXnOxw1JrURbFWKcA6ULWUtzbdz3/+yxRv1ExmThlw/m5LHPySM5I1MRCuo/9+9MtIhnywgfKRHjBEEw9JL5ZUN5pKr+YmeKzBNf++44Ik1y/ABcVA8Ei7KS6g0Id6cMd9+jEH4rh4zruyHfsntm0tuOIT9EnyKBRqFcbOP3AgEnmCqKLRLDV8cmKOxYuCe+55Wzo+4caDBzDh+47R+Twg7rzpAdNqAclgM51stUFeBQhCUixaw3QscG3xP3FocaOtUODjua8FAXPrneya9x0IDWGfrrAoDThLRNChMLBEzetZ4hWORwdijxxGyWL0Q0cSzmquoL9pam0ep1Ti/zqHoncB9H3sw==",n:600000};
+function u(x){return Uint8Array.from(atob(x),function(c){return c.charCodeAt(0)})}
+var B=document.getElementById("lk1B"),F=document.getElementById("lk1F"),P=document.getElementById("lk1P"),M=document.getElementById("lk1M");
+B.onclick=function(){F.hidden=false;P.focus()};
+async function go(){M.textContent="여는 중…";try{
+var k=await crypto.subtle.importKey("raw",new TextEncoder().encode(P.value),"PBKDF2",false,["deriveKey"]);
+var a=await crypto.subtle.deriveKey({name:"PBKDF2",salt:u(D.s),iterations:D.n,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"]);
+var t=await crypto.subtle.decrypt({name:"AES-GCM",iv:u(D.v)},a,u(D.c));
+document.getElementById("lk1Out").innerHTML=new TextDecoder().decode(t);document.getElementById("lk1Box").remove();
+}catch(e){M.textContent="비밀번호가 틀렸어요";P.select()}}
+document.getElementById("lk1G").onclick=go;P.addEventListener("keydown",function(e){if(e.key==="Enter")go()});})();</script></div>
 <div class="box"><b>가방 (편도마다)</b>
 <ul>
-<li>개인 가방 + <b>기내용 가방</b> 무료 (Explorer 카드 본인 예외) → <b>포스터 통은 들고 타기</b></li>
-<li>부치는 가방 1번째 <b>$0</b>, 2번째 $60, 가방당 50 lbs</li>
-<li>조건: 예약에 MileagePlus 번호 + Explorer 카드로 결제</li>
+<li>개인 가방(좌석 밑, 9 × 10 × 17 inch 이하) 무료</li>
+<li><b>기내용 가방</b> 무료: Basic Economy는 원래 안 되지만 "primary cardmember of a qualifying MileagePlus credit card"는 예외 → <b>포스터 통은 들고 타기</b></li>
+<li>부치는 가방 1번째 <b>Included (무료)</b>, 2번째 $60, 가방당 50 lbs (23 kg)</li>
+<li>조건 (United 메일 원문 요약): 체크인 때 Explorer 카드 회원 · 예약에 MileagePlus 번호 · 그 카드로 결제 · United가 운항하는 편 · United 카운터에서 부칠 것</li>
+<li>게이트에서 좌석 밑에 안 들어가는 가방이 걸리면 $75 (카드 예외가 적용 안 될 때)</li>
 </ul></div>
 <div class="box"><b>좌석:</b> "Choose seat"은 돈을 내는 것. 안 고르면 탑승 전 무료 자동 배정.<br>
 <b>변경·환불 불가</b> (예약 후 24시간 안에만 취소 가능).</div>
@@ -153,9 +177,9 @@ document.getElementById("lkG").onclick=go;P.addEventListener("keydown",function(
 <tr><td>등록비</td><td class="n">$425.00</td><td><span class="tag ok">결제함</span></td></tr>
 <tr><td>식비 (GSA 기준)</td><td class="n">$506.00</td><td>$69 + $92×4 + $69</td></tr>
 <tr><td>호텔 5박</td><td class="n">$1,210.78</td><td><span class="tag ok">예약함</span></td></tr>
-<tr><td>비행기 왕복 (United)</td><td class="n">$383.00</td><td><span class="tag ok">결제함</span></td></tr>
+<tr><td>비행기 왕복 (United)</td><td class="n">$382.80</td><td><span class="tag ok">결제함</span></td></tr>
 <tr><td>현지 교통 (BART · Uber · AUS 공항)</td><td class="n">? (약 $100 가정)</td><td>영수증 저장</td></tr>
-<tr class="tot"><td>교통비 빼기 전 남은 돈</td><td class="n">−$24.78</td><td><span class="tag no">초과</span></td></tr>
+<tr class="tot"><td>교통비 빼기 전 남은 돈</td><td class="n">−$24.58</td><td><span class="tag no">초과</span></td></tr>
 </table></div>
 <p class="small">Kolodzey grant는 AGU26 여행 경비에만 쓸 수 있음. 문의: CAEE-ORU (UT). 식비 기준: GSA FY2027 San Francisco ($92/일, 첫날·마지막 날 $69). 숙박 상한(GSA, 2026년 12월) $279/박 → 지금 호텔 $242로 상한 안.</p>
 </section>
@@ -167,7 +191,8 @@ document.getElementById("lkG").onclick=go;P.addEventListener("keydown",function(
 <li>✅ Travel Authorization request 제출 (UTDirect)</li>
 <li>✅ 호텔 예약 (Tilden, Agoda)</li>
 <li>✅ 비행기 예약 (United UA 1668 / UA 1116, Basic Economy)</li>
-<li>⬜ 예약에 MileagePlus 번호가 들어갔는지 확인 (가방 무료 조건)</li>
+<li>✅ 예약에 MileagePlus 번호 들어감 확인 (가방 무료 조건)</li>
+<li>⬜ United 영수증 메일(itinerary + receipt) 저장 → 정산용</li>
 <li>⬜ 지도교수님께: 교통비 포함 약 $125 초과 말씀드리기</li>
 <li>⬜ 출발 24시간 전 United 앱으로 온라인 체크인</li>
 <li>⬜ 호텔 따로 받는 수수료 확인</li>
