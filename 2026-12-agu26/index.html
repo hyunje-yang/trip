@@ -73,12 +73,12 @@ nav .wrap{padding-right:58px}
 <section id="sched"><h2>하루씩 일정</h2>
 <div class="tw"><table>
 <tr><th>날짜</th><th>할 일</th></tr>
-<tr><td>일 12/6</td><td>Austin → San Francisco. 호텔 체크인 15:00 이후</td></tr>
+<tr><td>일 12/6</td><td>UA 1668 AUS 08:45 → SFO 10:50. 호텔에 짐 맡기고, 체크인 15:00 이후</td></tr>
 <tr><td><b>월 12/7</b></td><td><b>포스터 ① 14:15–17:45</b> · H13J · Halls ABC</td></tr>
 <tr><td>화 12/8</td><td>세션 듣기 · 사람 만나기</td></tr>
 <tr><td><b>수 12/9</b></td><td><b>포스터 ② 08:30–12:00</b> · B31L · Halls ABC</td></tr>
 <tr><td>목 12/10</td><td>세션 듣기 · internship 기회 물어보기</td></tr>
-<tr><td>금 12/11</td><td>호텔 체크아웃 11:00 → 오후 비행기로 Austin</td></tr>
+<tr><td>금 12/11</td><td>10:00쯤 체크아웃 → UA 1116 SFO 12:21 → AUS 17:55</td></tr>
 </table></div>
 <p class="small">학회 기간: 12/7–12/11 · 학회장: Moscone Center, 747 Howard St</p>
 </section>
@@ -126,16 +126,23 @@ document.getElementById("lkG").onclick=go;P.addEventListener("keydown",function(
 <p class="small">호텔에서 따로 받는 수수료(urban fee 등)가 있는지는 아직 확인 안 함. 체크아웃 때 프런트에서 <b>itemized folio</b>(날짜별 요금·세금이 나온 영수증)를 꼭 받기 → 정산용.</p>
 </section>
 
-<section id="flight"><h2>비행기 <span class="tag todo">아직 예약 안 함</span></h2>
+<section id="flight"><h2>비행기: United <span class="tag ok">예약 완료</span></h2>
 <div class="tw"><table>
-<tr><th>구간</th><th>날짜</th><th>조건</th></tr>
-<tr><td>AUS → SFO 또는 OAK</td><td>일 12/6</td><td>오후 도착이면 충분 (체크인 15:00)</td></tr>
-<tr><td>SFO 또는 OAK → AUS</td><td>금 12/11</td><td>오후 출발 (체크아웃 11:00)</td></tr>
+<tr><th>날짜</th><th>편명</th><th>출발 → 도착</th></tr>
+<tr><td>일 12/6</td><td><b>UA 1668</b><br><span class="small">A320 · 4h 5m</span></td><td>AUS <b>08:45</b> → SFO <b>10:50</b></td></tr>
+<tr><td>금 12/11</td><td><b>UA 1116</b><br><span class="small">737 MAX 8 · 3h 34m</span></td><td>SFO <b>12:21</b> → AUS <b>17:55</b></td></tr>
 </table></div>
-<div class="box"><b>SFO냐 OAK냐:</b> 싼 쪽. 차이가 $30 안쪽이면 SFO.<br>
-SFO는 BART 한 번에 Powell St 역(호텔 근처)까지 약 30분. OAK는 공항 셔틀 열차 → Coliseum 역에서 BART로 갈아타고 약 45–50분.
-<span class="small">(시간은 대략값, 확인 안 함)</span><br>
-<b>목표: 왕복 약 $258 이하</b> (아래 예산표 참고)</div>
+<p class="small">시간은 각 공항 현지 시각 (SF는 Austin보다 2시간 느림). 요금 Basic Economy (N) 왕복 $383 · Explorer 카드 결제.</p>
+<div class="box"><b>가방 (편도마다)</b>
+<ul>
+<li>개인 가방 + <b>기내용 가방</b> 무료 (Explorer 카드 본인 예외) → <b>포스터 통은 들고 타기</b></li>
+<li>부치는 가방 1번째 <b>$0</b>, 2번째 $60, 가방당 50 lbs</li>
+<li>조건: 예약에 MileagePlus 번호 + Explorer 카드로 결제</li>
+</ul></div>
+<div class="box"><b>좌석:</b> "Choose seat"은 돈을 내는 것. 안 고르면 탑승 전 무료 자동 배정.<br>
+<b>변경·환불 불가</b> (예약 후 24시간 안에만 취소 가능).</div>
+<div class="box"><b>12/6 도착 후:</b> SFO 10:50 → BART로 Powell St 역 (약 30분, 대략값) → 호텔에 짐 맡기기 (luggage storage 있음) → 체크인 15:00.<br>
+<b>12/11 귀국:</b> 10:00쯤 체크아웃 → BART로 SFO → 12:21 출발. 국내선이라 1시간~1시간 반 전에 공항 도착.</div>
 </section>
 
 <section id="money"><h2>예산 $2,500</h2>
@@ -146,9 +153,9 @@ SFO는 BART 한 번에 Powell St 역(호텔 근처)까지 약 30분. OAK는 공�
 <tr><td>등록비</td><td class="n">$425.00</td><td><span class="tag ok">결제함</span></td></tr>
 <tr><td>식비 (GSA 기준)</td><td class="n">$506.00</td><td>$69 + $92×4 + $69</td></tr>
 <tr><td>호텔 5박</td><td class="n">$1,210.78</td><td><span class="tag ok">예약함</span></td></tr>
-<tr><td>비행기 왕복</td><td class="n">?</td><td><span class="tag todo">목표 ≤ $258</span></td></tr>
+<tr><td>비행기 왕복 (United)</td><td class="n">$383.00</td><td><span class="tag ok">결제함</span></td></tr>
 <tr><td>현지 교통 (BART · Uber · AUS 공항)</td><td class="n">? (약 $100 가정)</td><td>영수증 저장</td></tr>
-<tr class="tot"><td>비행기 + 교통에 남은 돈</td><td class="n">$358.22</td><td></td></tr>
+<tr class="tot"><td>교통비 빼기 전 남은 돈</td><td class="n">−$24.78</td><td><span class="tag no">초과</span></td></tr>
 </table></div>
 <p class="small">Kolodzey grant는 AGU26 여행 경비에만 쓸 수 있음. 문의: CAEE-ORU (UT). 식비 기준: GSA FY2027 San Francisco ($92/일, 첫날·마지막 날 $69). 숙박 상한(GSA, 2026년 12월) $279/박 → 지금 호텔 $242로 상한 안.</p>
 </section>
@@ -159,7 +166,10 @@ SFO는 BART 한 번에 Powell St 역(호텔 근처)까지 약 30분. OAK는 공�
 <li>✅ 예산 확인 (grant $1,000 + 지도교수님 $1,500)</li>
 <li>✅ Travel Authorization request 제출 (UTDirect)</li>
 <li>✅ 호텔 예약 (Tilden, Agoda)</li>
-<li>⬜ 비행기 예약 (AUS ↔ SFO/OAK)</li>
+<li>✅ 비행기 예약 (United UA 1668 / UA 1116, Basic Economy)</li>
+<li>⬜ 예약에 MileagePlus 번호가 들어갔는지 확인 (가방 무료 조건)</li>
+<li>⬜ 지도교수님께: 교통비 포함 약 $125 초과 말씀드리기</li>
+<li>⬜ 출발 24시간 전 United 앱으로 온라인 체크인</li>
 <li>⬜ 호텔 따로 받는 수수료 확인</li>
 <li>⬜ 포스터 2장 만들기 · 인쇄 (44 × 44 inch 이내)</li>
 <li>⬜ 11월 중순 메일: 보드 번호 확인</li>
